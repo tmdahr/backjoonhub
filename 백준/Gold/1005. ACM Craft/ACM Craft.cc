@@ -3,36 +3,37 @@
 #include <vector>
 using namespace std;
 
-typedef struct _node
-{
-	int b;
-	long long t;
+typedef struct {
+    int num;
+    long long t;
 } node;
-int d[1005], indegree[1005], len[1005];
-vector<int> rule[1005];
-queue<node> build;
 
-int topologic(int n, int w)
+int n, k, w;
+int delay[1005], indgree[1005], ct[1005];
+vector<int> map[1005];
+queue<node> q;
+
+void BFS()
 {
 	for(int i=1; i<=n; i++)
 	{
-		if(indegree[i]==0) build.push({i,d[i]});
+		if(indgree[i]==0) q.push({i, delay[i]});
 	}
-	while(!build.empty())
+	while(!q.empty())
 	{
-		node now = build.front();
-		build.pop();
-		if(now.b==w)
+		node now = q.front();
+		q.pop();
+		if(now.num==w)
 		{
-			while(!build.empty()) build.pop();
-			return now.t;
+			printf("%lld\n", now.t);
+			return ;
 		}
-		for(int i=0; i<rule[now.b].size(); i++)
+		for(int i=0; i<map[now.num].size(); i++)
 		{
-			int nb = rule[now.b][i];
-			indegree[nb]--;
-			if(len[nb]<now.t+d[nb]) len[nb] = now.t+d[nb];
-			if(indegree[nb]==0) build.push({nb,len[nb]});
+			int next = map[now.num][i];
+			indgree[next]--;
+			if(ct[next]<now.t+delay[next]) ct[next] = now.t+delay[next];
+			if(indgree[next]==0) q.push({next,ct[next]});
 		}
 	}
 }
@@ -41,28 +42,29 @@ int main(void)
 {
 	int t;
 	scanf("%d", &t);
-	while(t!=0)
+	for(; t>0; t--)
 	{
-		int n,k,w;
 		scanf("%d %d", &n, &k);
+		while (!q.empty()) q.pop();
+		for (int i = 1; i <= n; i++)
+		{
+    		map[i].clear();
+    		indgree[i] = 0;
+    		ct[i] = 0;
+		}
 		for(int i=1; i<=n; i++)
 		{
-			scanf("%d", &d[i]);
-			indegree[i]=0;
-			rule[i].clear();
-			len[i]=0;
+			scanf("%d", &delay[i]);
 		}
+		int x, y;
 		for(int i=0; i<k; i++)
 		{
-			int x,y;
 			scanf("%d %d", &x, &y);
-			rule[x].push_back(y);
-			indegree[y]++;
+			map[x].push_back(y);
+			indgree[y]++;
 		}
 		scanf("%d", &w);
-		long long time = topologic(n,w);
-		printf("%d\n", time);
-		t--;
+		BFS();
 	}
 	return 0;
 }
