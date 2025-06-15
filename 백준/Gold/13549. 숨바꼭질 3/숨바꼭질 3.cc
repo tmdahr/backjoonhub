@@ -15,7 +15,6 @@ struct cmp
 	}
 };
 priority_queue<node, vector<node>, cmp> pq;
-vector<node> map[100005];
 int dist[100005], visit[100005];
 
 int main(void)
@@ -36,17 +35,17 @@ int main(void)
 		}
 		if(visit[now.to]==true) continue;
 		else visit[now.to]=true;
-		if(dist[now.to-1] > now.cost+1)
+		if(now.to-1>=0 && dist[now.to-1] > now.cost+1)
 		{
 			dist[now.to-1] = now.cost+1;
 			pq.push({now.to-1,now.cost+1});
 		}
-		if(dist[now.to*2] > now.cost && now.to*2<=100000)
+		if(now.to*2<=100000 && dist[now.to*2] > now.cost)
 		{
 			dist[now.to*2] = now.cost;
 			pq.push({now.to*2,now.cost});
 		}
-		if(dist[now.to+1] > now.cost+1 && now.to+1<=100000)
+		if(now.to+1<=100000 && dist[now.to+1] > now.cost+1)
 		{
 			dist[now.to+1] = now.cost+1;
 			pq.push({now.to+1,now.cost+1});
