@@ -9,8 +9,8 @@ int main(void)
 {
 	int i;
 	scanf("%d %d", &n, &k);
-	for(i = 1; i <= n; i++)
-		q.push(i);
+	for(i = 1; i <= n; i++) q.push(i);
+    
 	printf("<");
 	while(!q.empty())
 	{
@@ -20,8 +20,7 @@ int main(void)
 			q.pop();
 		}
 		printf("%d", q.front());
-		if(q.size() != 1)
-			printf(", ");
+		if(q.size() != 1) printf(", ");
 		q.pop();
 	}
 	printf(">");
