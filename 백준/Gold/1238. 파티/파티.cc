@@ -56,10 +56,7 @@ int main(void)
 		}
 		if(i==x)
 		{
-			for(int j=1; j<=n; j++)
-			{
-				turn[j] = dist[j];
-			}
+			for(int j=1; j<=n; j++) turn[j] = dist[j];
 		}
 		else go[i] = dist[x];
 	}
