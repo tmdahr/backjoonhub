@@ -9,7 +9,8 @@ typedef struct {
 vector<long long> dist;
 bool cycle = false;
 
-void bellmanFord(int n, vector<node>& edges) {
+void bellmanFord(int n, vector<node>& edges)
+{
     dist.resize(n + 1, 2147483647);
     dist[1] = 0;
 
@@ -46,7 +47,7 @@ int main(void)
     if(cycle) printf("-1\n");
     else
     {
-        for(int i = 2; i <= n; i++)
+        for(int i=2; i <= n; i++)
         {
             if(dist[i] == 2147483647) printf("-1\n");
             else printf("%lld\n", dist[i]);
