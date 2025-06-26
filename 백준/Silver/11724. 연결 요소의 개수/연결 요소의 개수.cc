@@ -37,4 +37,6 @@ int main(void)
         }
     }
     printf("%d", cnt);
+    
+    return 0;
 }
