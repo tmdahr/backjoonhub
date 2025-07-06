@@ -10,37 +10,18 @@ int main(void)
 		{
 			if(n < 9 || n > 9)
 			{
-				if(n < 12 || n > 12)
-				{
-					nm = 5;
-				}
-				else if(n >= 3)
-				{
-					nm = 3;
-				}
+				if(n < 12 || n > 12) nm = 5;
+				else if(n >= 3) nm = 3;
 			}
-			else if(n >= 3)
-			{
-				nm = 3;
-			}
+			else if(n >= 3) nm = 3;
 		}
-		else if(n >= 3)
-		{
-			nm = 3;
-		}
+		else if(n >= 3) nm = 3;
 		else if (n > 2) break;
-		
 		n = n - nm;
 	}
 	
-	if(n == 0)
-	{
-		printf("%d", m);
-	}
-	else
-	{
-		printf("-1");
-	}
+	if(n == 0) printf("%d", m);
+	else printf("-1");
 	
 	return 0;
 }
