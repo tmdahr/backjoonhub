@@ -9,13 +9,13 @@ int t,n,r;
 void input()
 {
 	char temp;
-	scanf(" %c",&temp);//[
+	scanf(" %c",&temp);
 	for(int i=0;i<n;i++)
 	{
 		scanf("%d", &num[i]);
 		if(i!=n-1) scanf(" %c",&temp);
 	}
-	scanf(" %c",&temp);//]
+	scanf(" %c",&temp);
 }
 
 int main(void)
