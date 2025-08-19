@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include <queue>
-#include <vector>
-using namespace std;
 
 int _max(int a,int b)
 {
@@ -11,9 +8,7 @@ int _max(int a,int b)
 }
 
 int stair[305];
-int dp[305];//dp[x]  x번째 계단으로 왔을때 최대값 
-
-
+int dp[305];
 
 int main(void)
 {
